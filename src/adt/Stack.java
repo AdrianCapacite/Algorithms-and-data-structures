@@ -20,7 +20,7 @@ public class Stack implements IDataStructures, Colors {
     }
 
     @Override
-    public void delete(int element) {
+    public int remove(int element) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }

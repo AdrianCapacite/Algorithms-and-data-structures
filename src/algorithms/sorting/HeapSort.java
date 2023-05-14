@@ -1,8 +1,8 @@
 package algorithms.sorting;
 
-import adt.Heap;
+import adt.MinHeap;
 
-public class HeapSort extends Heap implements ISortingAlgorithm{
+public class HeapSort extends MinHeap implements ISortingAlgorithm {
 
     public static void main(String[] args) {
         System.out.println("==== HeapSort demo ====");
