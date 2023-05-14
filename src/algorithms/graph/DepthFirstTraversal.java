@@ -44,7 +44,7 @@ public class DepthFirstTraversal implements IGraphTraversal {
     }
 
     @Override
-    public void initialize(IGraphDataStructure graph) {
+    public static void initialize(IGraphDataStructure graph) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'initialize'");
     }
