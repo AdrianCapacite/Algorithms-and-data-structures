@@ -1,17 +1,25 @@
 package algorithms.sorting;
 
-import adt.MinHeap;
+import adt.MaxHeap;
 
-public class HeapSort extends MinHeap implements ISortingAlgorithm {
+public class HeapSort implements ISortingAlgorithm {
 
     public static void main(String[] args) {
         System.out.println("==== HeapSort demo ====");
+
+        TestSorting testSorting = new TestSorting();
+        testSorting.testSorting(new HeapSort());
+
     }
 
     @Override
     public void sort(int[] array) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sort'");
+        MaxHeap heap = new MaxHeap(array);
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            array[i] = heap.remove();
+        }
+
     }
 
     @Override

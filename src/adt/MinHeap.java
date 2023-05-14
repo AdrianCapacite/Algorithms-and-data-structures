@@ -98,6 +98,13 @@ public class MinHeap implements IDataStructures, Colors {
         }
     }
 
+    public void heapify(int index) {
+        int left = index * 2;
+        int right = index * 2 + 1;
+        int smallest = index;
+
+    }
+
     @Override
     public boolean contains(int element) {
         // TODO Auto-generated method stub

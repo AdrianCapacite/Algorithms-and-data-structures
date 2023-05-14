@@ -31,6 +31,17 @@ public class MaxHeap implements IDataStructures, Colors {
         size = 0;
     }
 
+    public MaxHeap(int[] array) {
+        heap = new int[array.length + 1];
+        size = array.length;
+
+        for (int i = 0; i < array.length; i++) {
+            heap[i + 1] = array[i];
+        }
+
+        buildHeap();
+    }
+
     @Override
     public void insert(int element) {
         if (size == heap.length) {
@@ -94,6 +105,26 @@ public class MaxHeap implements IDataStructures, Colors {
     public void buildHeap() {
         for (int i = size / 2; i > 0; i--) {
             siftDown(i);
+        }
+    }
+
+    public void heapify(int index) {
+        int left = index * 2;
+        int right = index * 2 + 1;
+        int largest = index;
+
+        if (left <= size && heap[left] > heap[largest]) {
+            largest = left;
+        }
+        if (right <= size && heap[right] > heap[largest]) {
+            largest = right;
+        }
+
+        if (largest != index) {
+            int temp = heap[index];
+            heap[index] = heap[largest];
+            heap[largest] = temp;
+            heapify(largest);
         }
     }
 
