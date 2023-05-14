@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 import console.Colors;
 
-public class MinHeap implements IDataStructures, Colors {
+public class MaxHeap implements IDataStructures, Colors {
 
     public static void main(String[] args) {
         System.out.println(PURPLE + "==== Heap demo ====" + RESET);
 
-        MinHeap heap = new MinHeap(10);
+        MaxHeap heap = new MaxHeap(10);
         for (int i = 0; i < 10; i++) {
             heap.insert((int) (Math.random() * 100));
         }
@@ -26,7 +26,7 @@ public class MinHeap implements IDataStructures, Colors {
     int size;
     int[] heap;
 
-    public MinHeap(int heapSize) {
+    public MaxHeap(int heapSize) {
         heap = new int[heapSize + 1];
         size = 0;
     }
@@ -42,13 +42,12 @@ public class MinHeap implements IDataStructures, Colors {
         siftUp(size);
     }
 
-
-    public void siftUp(int index) { //
+    public void siftUp(int index) {
         int value = heap[index];
-        heap[0] = Integer.MIN_VALUE;
+        heap[0] = Integer.MAX_VALUE;
 
-        // While the value is less than the parent
-        while (value < heap[index / 2]) {
+        // While the value is greater than the parent
+        while (value > heap[index / 2]) {
             heap[index] = heap[index / 2];
             index /= 2;
         }
@@ -69,19 +68,19 @@ public class MinHeap implements IDataStructures, Colors {
         return heap[0];
     }
 
-    public void siftDown(int index) { // Or heapify
+    public void siftDown(int index) {
         int value = heap[index];
         int child = index * 2; // Left child
 
         // While loop is within the bounds of the heap
         for (; child <= size; child *= 2) {
-            // If the right child is less than the left child
-            if (child < size && heap[child] > heap[child + 1]) {
+            // If the right child is greater than the left child
+            if (child < size && heap[child] < heap[child + 1]) {
                 child++;
             }
 
-            // Stop if the value is less than the child
-            if (value < heap[child]) break;
+            // Stop if the value is greater than the child
+            if (value > heap[child]) break;
 
             // Move the child up
             heap[index] = heap[child];
