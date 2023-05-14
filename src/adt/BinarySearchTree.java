@@ -9,8 +9,14 @@ public class BinarySearchTree implements IDataStructures, Colors {
 
         BinarySearchTree tree = new BinarySearchTree();
 
-        for (int i = 0; i < 10; i++) {
-            tree.insert((int) (Math.random() * 100));
+        int[] arr = {94,31,44,41,53,45,89,78,9,86};
+
+        // for (int i = 0; i < 10; i++) {
+        //     tree.insert((int) (Math.random() * 100));
+        // }
+
+        for (int i = 0; i < arr.length; i++) {
+            tree.insert(arr[i]);
         }
 
         System.out.println(tree);
@@ -35,9 +41,13 @@ public class BinarySearchTree implements IDataStructures, Colors {
             buffer.append('\n');
             if (right != null) {
                 right.print(buffer, childrenPrefix + "├── ", childrenPrefix + "│   ");
+            } else if (left != null) {
+                buffer.append(childrenPrefix + "├── null\n");
             }
             if (left != null) {
                 left.print(buffer, childrenPrefix + "└── ", childrenPrefix + "    ");
+            } else if (right != null) {
+                buffer.append(childrenPrefix + "└── null\n");
             }
         }
 
@@ -57,7 +67,7 @@ public class BinarySearchTree implements IDataStructures, Colors {
 
     /**
      * Recursive insert method
-     * 
+     *
      * @param current
      * @param element
      * @return
